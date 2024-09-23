@@ -1,6 +1,6 @@
-import { useParams } from "react-router-dom";
+import { useAuth } from "../authContext/authContext"; // Import AuthContext
 export default function ProfilePage() {
-  const params = useParams();
+  const { email } = useAuth();
   return (
     <div className="max-w-md mx-auto mt-10 bg-white overflow-hidden shadow-lg rounded-lg border">
       <div className="px-8 py-6">
@@ -16,7 +16,7 @@ export default function ProfilePage() {
           <div className="py-4 sm:py-6 sm:grid sm:grid-cols-3 sm:gap-6">
             <dt className="text-base font-medium text-gray-500">Full name</dt>
             <dd className="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
-              {params.userName}
+              {email.split("@")[0]}
             </dd>
           </div>
           <div className="py-4 sm:py-6 sm:grid sm:grid-cols-3 sm:gap-6">
@@ -24,7 +24,7 @@ export default function ProfilePage() {
               Email address
             </dt>
             <dd className="mt-1 text-base text-gray-900 sm:mt-0 sm:col-span-2">
-              johndoe@example.com
+              {email}
             </dd>
           </div>
           <div className="py-4 sm:py-6 sm:grid sm:grid-cols-3 sm:gap-6">

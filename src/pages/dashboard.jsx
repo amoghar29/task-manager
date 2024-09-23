@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../authContext/authContext";
 const StarRating = ({ rating }) => {
   return (
     <div className="flex items-center">
@@ -20,18 +20,33 @@ const StarRating = ({ rating }) => {
 };
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+  const logout = useAuth();
+  const handleLogin = (e) => {
+    e.preventDefault();
+    logout();
+    navigate("/login");
+  };
   return (
     <>
       <div className="min-h-screen bg-gray-900 text-gray-100 py-6 px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           <div className="flex justify-between items-center mb-8">
             <h1 className="text-3xl font-bold">Goal Tracker</h1>
-            <Link
-              to="/profile/user" // Replace 'user' with the actual username or user ID
-              className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md transition duration-300"
-            >
-              Profile
-            </Link>
+            <div className="flex space-x-4">
+              <Link
+                to="/profile" // Replace 'user' with the actual username or user ID
+                className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-md transition duration-300"
+              >
+                My Profile
+              </Link>
+              <button
+                className="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-md transition duration-300"
+                onClick={handleLogin}
+              >
+                Logout
+              </button>
+            </div>
           </div>
 
           <div className="min-h-screen bg-gray-900 text-gray-100 py-6 px-4 sm:px-6 lg:px-8">
@@ -170,4 +185,3 @@ const Dashboard = () => {
 };
 
 export default Dashboard;
-// export default StarRating;
