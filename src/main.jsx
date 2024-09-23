@@ -7,8 +7,6 @@ import "./index.css";
 createRoot(document.getElementById("root")).render(
   <BrowserRouter>
     <AuthProvider>
-      {" "}
-      {/* Wrap App with AuthProvider */}
       <App />
     </AuthProvider>
   </BrowserRouter>
