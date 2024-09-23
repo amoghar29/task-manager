@@ -21,11 +21,11 @@ const StarRating = ({ rating }) => {
 
 const Dashboard = () => {
   const navigate = useNavigate();
-  const logout = useAuth();
+  const { logout } = useAuth();
   const handleLogin = (e) => {
     e.preventDefault();
     logout();
-    navigate("/login");
+    navigate("/");
   };
   return (
     <>
